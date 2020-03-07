@@ -85,7 +85,7 @@ label = %title:0:30:...%
 [module/player-cmus]
 type = custom/script 
 exec = ~/.config/polybar/scripts/player-cmus.sh
-interval = 5
+interval = 1
 click-left = cmus-remote -n &
 click-right = cmus-remote -r &
 click-middle = cmus-remote -u &
