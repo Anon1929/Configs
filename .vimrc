@@ -2,11 +2,21 @@
 """""""
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugues')
-
-
+Plug 'scrooloose/syntastic'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 """""""
+"remap do autocomplet
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
@@ -40,7 +50,7 @@ set hidden "Hide buffers when they are abandoned
 
 set mouse=a " Enable use of the mouse for all modes
 
-set number " Display line numbers on the left 
+set relativenumber " Display line numbers on the left 
 
 set ruler " Display the cursor position on the last line of the screen or in the status
 
@@ -66,3 +76,9 @@ vnoremap <C-c> "+y
 map <C-v> "+P
 
 set clipboard=unnamed
+
+"corzinha
+"colorscheme blackdust darks
+colorscheme proton
+
+
