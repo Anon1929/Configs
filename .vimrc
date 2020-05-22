@@ -3,20 +3,13 @@
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugues')
 Plug 'scrooloose/syntastic'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'Valloric/YouCompleteMe'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 """""""
 "remap do autocomplet
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
@@ -26,6 +19,10 @@ set nocompatible
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
+
+set omnifunc=syntaxcomplete#Complete
+"Tirar a barra de preview
+set completeopt-=preview
 
 syntax on " Enable syntax highlighting
 
@@ -72,8 +69,7 @@ set wrap
 set ttyfast "speed
 
 "remap do clipboard
-vnoremap <C-c> "+y
-map <C-v> "+P
+noremap <C-c> "+y
 
 set clipboard=unnamed
 
